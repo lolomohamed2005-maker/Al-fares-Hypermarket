@@ -1,0 +1,10 @@
+{
+  "name": "Remix Remix الفارس هايبر ماركت | Al Fares Hyper Market",
+  "description": "منصة تسوق متكاملة ولوحة تحكم ذكية لإدارة هايبر ماركت الفارس: تسوق إلكتروني، إدارة المخزون، المبيعات، الموظفين، السلف والمصروفات",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
