@@ -8,20 +8,14 @@ import {
   Store,
   PhoneCall,
   Clock,
-  ShieldCheck,
   ChevronDown,
   LogOut,
-  Sparkles,
   Share2,
-  Check,
   Lock,
   MapPin,
-  Code,
-  FolderArchive,
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 import { ShareLinksModal } from './ShareLinksModal';
-import { AllCodeModal } from './AllCodeModal';
 
 export const Header: React.FC = () => {
   const {
@@ -43,26 +37,6 @@ export const Header: React.FC = () => {
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isShareLinksOpen, setIsShareLinksOpen] = useState(false);
-  const [isAllCodeOpen, setIsAllCodeOpen] = useState(false);
-
-  const handleDownloadZip = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    try {
-      const res = await fetch('/al-fares-hypermarket.zip');
-      if (!res.ok) throw new Error('Failed to fetch');
-      const blob = await res.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'al-fares-hypermarket.zip';
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-    } catch {
-      window.open('/al-fares-hypermarket.zip', '_blank');
-    }
-  };
 
   const handleAdminButtonClick = () => {
     if (currentView === 'store') {
@@ -178,32 +152,6 @@ export const Header: React.FC = () => {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-1.5 sm:gap-2.5">
-            {/* Download Full Project ZIP Button */}
-            <a
-              id="btn-download-zip-header"
-              href="/al-fares-hypermarket.zip"
-              download="al-fares-hypermarket.zip"
-              onClick={handleDownloadZip}
-              className="flex items-center gap-1.5 text-xs font-black px-2.5 sm:px-3 py-2 rounded-xl transition-all shadow-xs border bg-amber-400 hover:bg-amber-300 text-neutral-950 border-amber-500/50"
-              title="تحميل فولدر المشروع بالكامل في ملف مضغوط (.zip)"
-            >
-              <FolderArchive className="w-3.5 h-3.5 text-neutral-950" />
-              <span className="hidden sm:inline">تحميل فولدر المشروع (.zip)</span>
-              <span className="sm:hidden">الفولدر (zip)</span>
-            </a>
-
-            {/* Copy All Project Code Button */}
-            <button
-              id="btn-all-codes"
-              onClick={() => setIsAllCodeOpen(true)}
-              className="flex items-center gap-1.5 text-xs font-black px-2.5 sm:px-3 py-2 rounded-xl transition-all shadow-xs border bg-emerald-700 hover:bg-emerald-800 text-white border-emerald-600"
-              title="نسخ وتحميل جميع أكواد المشروع مجمعة معاً"
-            >
-              <Code className="w-3.5 h-3.5 text-amber-300" />
-              <span className="hidden sm:inline">كل الأكواد</span>
-              <span className="sm:hidden">الأكواد</span>
-            </button>
-
             {/* Share Store & Admin Links Button */}
             <button
               id="btn-share-store-link"
@@ -405,12 +353,6 @@ export const Header: React.FC = () => {
       <ShareLinksModal
         isOpen={isShareLinksOpen}
         onClose={() => setIsShareLinksOpen(false)}
-      />
-
-      {/* All Project Code Modal */}
-      <AllCodeModal
-        isOpen={isAllCodeOpen}
-        onClose={() => setIsAllCodeOpen(false)}
       />
     </header>
   );
