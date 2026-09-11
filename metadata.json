@@ -1,10 +1,13 @@
 {
-  "name": "Remix Remix الفارس هايبر ماركت | Al Fares Hyper Market",
+  "background_color": "#ffffff",
   "description": "منصة تسوق متكاملة ولوحة تحكم ذكية لإدارة هايبر ماركت الفارس: تسوق إلكتروني، إدارة المخزون، المبيعات، الموظفين، السلف والمصروفات",
-  "requestFramePermissions": [
-    "camera"
-  ],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "al-fares-hypermarket.vercel",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "al-fares-hypermarket.vercel",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "id": "/"
 }
